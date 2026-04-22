@@ -2,6 +2,8 @@ backend:
   name: github
   repo: fpxconsulting/jamstack-test
   branch: main
+  base_url: https://jamstack-test-apk.pages.dev
+  auth_endpoint: api/auth
 
 media_folder: public/images
 public_folder: /images
