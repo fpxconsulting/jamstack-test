@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: fpxconsulting/jamstack-test
+  branch: main
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: string }
+      - { label: Publish Date, name: pubDate, widget: datetime }
+      - { label: Body, name: body, widget: markdown }
+      
