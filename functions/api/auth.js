@@ -4,7 +4,11 @@ export async function onRequestGet(context) {
   const code = url.searchParams.get("code");
 
   if (!code) {
-    return new Response("Missing code", { status: 400 });
+    const githubAuthUrl = new URL("https://github.com/login/oauth/authorize");
+    githubAuthUrl.searchParams.set("client_id", env.GITHUB_CLIENT_ID);
+    githubAuthUrl.searchParams.set("scope", "repo,user");
+    githubAuthUrl.searchParams.set("redirect_uri", `https://jamstack-test-apk.pages.dev/api/auth`);
+    return Response.redirect(githubAuthUrl.toString(), 302);
   }
 
   const response = await fetch("https://github.com/login/oauth/access_token", {
